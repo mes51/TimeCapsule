@@ -12,9 +12,10 @@ describe "PostController" do
   let(:day) { 24 * 3600 }
   let(:post_text) { "rwofowejfoewfoiwn" }
   let(:post_time) { 100 }
+  #FIXME: change your account access key and access key secret
   let(:user) { User.new({ :user_id => "444420137",
                           :screen_name => "TimeMachineTest",
-                          :access_key => "444420137-VcxV0606pltj3PCm2Xb0nBlOgfA0wtODzkldlf6N",     #FIXME: change your account access key and access key secret
+                          :access_key => "444420137-VcxV0606pltj3PCm2Xb0nBlOgfA0wtODzkldlf6N",
                           :access_key_secret => "hChTRh34NAr2JfX0V8sbpV9ojR0VJXAbMEoFrHQh9jE" }) }
 
   describe "post" do

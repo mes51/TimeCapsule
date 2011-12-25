@@ -12,6 +12,7 @@ GEM
     bson_ext (1.5.2)
       bson (= 1.5.2)
     builder (3.0.0)
+    clockwork (0.3.4)
     diff-lcs (1.1.3)
     erubis (2.7.0)
     faraday (0.7.5)
@@ -110,6 +111,7 @@ PLATFORMS
 
 DEPENDENCIES
   bson_ext
+  clockwork
   erubis (~> 2.7.0)
   httpclient
   mongoid

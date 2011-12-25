@@ -19,12 +19,20 @@ Padrino::Logger::Config[:local] = { :log_level => :devel, :stream => :stdout }
 #
 Padrino.before_load do
   TimeCapsuleEnv = YAML.load(File.open("config/config.yml"))
+  Padrino.require_dependencies(Padrino.root + "/task/**/*.rb")
+  Padrino.require_dependencies(Padrino.root + "/site/**/*.rb")
 end
 
 ##
 # Add your after load hooks here
 #
 Padrino.after_load do
+  t = Thread.new do
+    Clockwork.every 1.days, "" do
+
+    end
+    Clockwork.run
+  end
 end
 
 Padrino.load!

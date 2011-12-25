@@ -15,6 +15,7 @@ gem 'bson_ext', :require => "mongo"
 gem 'twitter'
 gem 'oauth'
 gem 'httpclient'
+gem 'clockwork'
 
 # Test requirements
 gem 'rr', :group => "test"
