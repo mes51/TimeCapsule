@@ -8,9 +8,8 @@ TimeCapsule.controllers do
                         :post => params["post"],
                         :post_time => Time.now + params["post_time"].to_i * DAY })
       post.save
-      "complete"
     else
-      "failed"
+      halt 403
     end
   end
 end

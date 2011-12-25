@@ -10,25 +10,25 @@ describe "PostController" do
   end
 
   let(:day) { 24 * 3600 }
+  let(:post_text) { "rwofowejfoewfoiwn" }
+  let(:post_time) { 100 }
+  let(:user) { User.new({ :user_id => "444420137",
+                          :screen_name => "TimeMachineTest",
+                          :access_key => "444420137-VcxV0606pltj3PCm2Xb0nBlOgfA0wtODzkldlf6N",     #FIXME: change your account access key and access key secret
+                          :access_key_secret => "hChTRh34NAr2JfX0V8sbpV9ojR0VJXAbMEoFrHQh9jE" }) }
 
   describe "post" do
     context "valid parms given" do
-      let(:post_text) { "rwofowejfoewfoiwn" }
-      let(:post_time) { 100 }
-
       before do
         post TimeCapsuleEnv["url"] + "post",
              { :post => post_text,
                :post_time => post_time },
-             "rack.session" => { :user => User.new({ :user_id => "444420137",
-                                                     :screen_name => "TimeMachineTest",
-                                                     :access_key => "444420137-VcxV0606pltj3PCm2Xb0nBlOgfA0wtODzkldlf6N",
-                                                     :access_key_secret => "hChTRh34NAr2JfX0V8sbpV9ojR0VJXAbMEoFrHQh9jE" }) }
+             "rack.session" => { :user => user }
       end
 
       context do
-        subject { last_response.body }
-        it { should == "complete" }
+        subject { last_response.status }
+        it { should == 200 }
       end
 
       context do
@@ -48,10 +48,48 @@ describe "PostController" do
     end
 
     context "no logged in" do
+      before do
+        post TimeCapsuleEnv["url"] + "post",
+             { :post => post_text,
+               :post_time => post_time }
+      end
 
+      subject { last_response.status }
+      it { should == 403 }
     end
 
-    context "invalid params given" do
+    context "not give post text" do
+      before do
+        post TimeCapsuleEnv["url"] + "post",
+             { :post_time => post_time },
+             "rack.session" => { :user => user }
+      end
+
+      subject { last_response.status }
+      it { should == 403 }
+    end
+
+    context "not give post time" do
+      before do
+        post TimeCapsuleEnv["url"] + "post",
+             { :post => post_text },
+             "rack.session" => { :user => user }
+      end
+
+      subject { last_response.status }
+      it { should == 403 }
+    end
+
+    context "invalid post time given" do
+      before do
+        post TimeCapsuleEnv["url"] + "post",
+             { :post => post_text,
+               :post_time => post_time },
+             "rack.session" => { :user => user }
+      end
+
+      subject { last_response.status }
+      it { should == 200 }
     end
   end
 end
