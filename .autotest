@@ -1,0 +1,7 @@
+# coding: utf-8
+
+Autotest.add_hook :initialize do |at|
+    at.add_mapping(/src\/.*\.rb$/, true) do |f, _|
+        Dir.glob('spec/*.rb')
+    end 
+end

@@ -12,6 +12,9 @@ gem 'sinatra-flash', :require => 'sinatra/flash'
 gem 'erubis', "~> 2.7.0"
 gem 'mongoid'
 gem 'bson_ext', :require => "mongo"
+gem 'twitter'
+gem 'oauth'
+gem 'httpclient'
 
 # Test requirements
 gem 'rr', :group => "test"

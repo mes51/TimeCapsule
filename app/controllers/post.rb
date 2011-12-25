@@ -2,15 +2,15 @@ TimeCapsule.controllers do
   DAY = 24 * 3600
 
   post :post do
-    unless env["rack.session"][:user]
-      redirect "/"
-      return
+    user = env["rack.session"].to_hash[:user]
+    if user && params["post"] && params["post_time"] && params["post_time"].to_i > 0
+      post = Post.new({ :user_id => user.user_id,
+                        :post => params["post"],
+                        :post_time => Time.now + params["post_time"].to_i * DAY })
+      post.save
+      "complete"
+    else
+      "failed"
     end
-
-    user = env["rack.session"][:user]
-    post = Post.new({ :user_id => user.user_id,
-                      :post => params["post"],
-                      :post_time => Time.now + params["post_time"].to_i * DAY })
-    post.save
   end
 end
