@@ -42,9 +42,10 @@ describe "PostController" do
         it { should == post_text }
       end
 
+      let(:valid_post_time) { Time.new(Time.now.year, Time.now.month, Time.now.day) + post_time * day }
       context do
         subject { Post.where.to_a[0].post_time }
-        it { should == Time.now + post_time * day }
+        it { should == valid_post_time }
       end
     end
 

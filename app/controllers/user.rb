@@ -1,22 +1,22 @@
 TimeCapsule.controllers :user do
-  # get :index, :map => "/foo/bar" do
-  #   session[:foo] = "bar"
-  #   render 'index'
-  # end
+  get :get_info do
+    content_type :json
+    user_info = {}
 
-  # get :sample, :map => "/sample/url", :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
+    user = env["rack.session"].to_hash[:user]
+    if user
+      user_info[:user_id] = user.user_id
+      user_info[:screen_name] = user.screen_name
+    end
 
-  # get :foo, :with => :id do
-  #   "Maps to url '/foo/#{params[:id]}'"
-  # end
+    Yajl::Encoder.encode user_info
+  end
 
-  # get "/example" do
-  #   "Hello world!"
-  # end
+  get :login do
+    redirect "/auth/request_key"
+  end
 
-  
+  get :logout do
+    env["rack.session"][:user] = nil
+  end
 end

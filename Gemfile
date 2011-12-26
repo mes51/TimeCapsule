@@ -16,6 +16,7 @@ gem 'twitter'
 gem 'oauth'
 gem 'httpclient'
 gem 'clockwork'
+gem 'yajl-ruby', :require => 'yajl'
 
 # Test requirements
 gem 'rr', :group => "test"
