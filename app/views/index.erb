@@ -2,13 +2,33 @@
   <head>
     <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.mobile-1.0.min.css"></link>
     <script type="text/javascript" src="/javascripts/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.textchange.min.js"></script>
+    <script type="text/javascript" src="/javascripts/underscore-min.js"></script>
+    <script type="text/javascript" src="/javascripts/backbone-min.js"></script>
     <script type="text/javascript" src="/javascripts/time-capsule.js"></script>
     <script type="text/javascript" src="/javascripts/jquery.mobile-1.0.min.js"></script>
   </head>
   <body>
     <div id="top" data-role="page">
       <div data-role="header">
-        <h1>m9</h1>
+        <h1>TimeCapsule</h1>
+      </div>
+      <div class="content" data-role="content">
+        <div id="no-login">
+          <a rel="external" href="/auth/request_key" data-role="button">Twitterでログイン</a>
+        </div>
+        <div id="logged-in" style="display:none">
+          <button id="logout">ログアウト</button>
+          <label for="post">タイムカプセルに入れるツイート</label>
+          <textarea type="text" id="post"></textarea>
+          あと<span id="count" style="color:gray">124</span>文字
+          <div data-role="fieldcontain">
+            <label for="post-time">開封日</label>
+            <input id="post-time" type="number" value="1" min="1"></input>日後
+          </div>
+          <span id="bury-msg" style="display:none">タイムカプセルを埋めました</span>
+          <button id="submit">埋める</button>
+        </div>
       </div>
     </div>
   </body>
