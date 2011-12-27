@@ -7,6 +7,7 @@ TimeCapsule.controllers do
       time = Time.now
       post = Post.new({ :user_id => user.user_id,
                         :post => params["post"],
+                        :bury_time => Time.new(time.year, time.month, time.day),
                         :post_time => Time.new(time.year, time.month, time.day) + params["post_time"].to_i * DAY })
       post.save
     else

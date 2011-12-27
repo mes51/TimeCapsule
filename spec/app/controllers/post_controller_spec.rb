@@ -27,23 +27,28 @@ describe "PostController" do
              "rack.session" => { :user => user }
       end
 
-      context do
+      context "status" do
         subject { last_response.status }
         it { should == 200 }
       end
 
-      context do
+      context "length" do
         subject { Post.where.to_a.length }
         it { should_not == 0 }
       end
 
-      context do
+      context "post" do
         subject { Post.where.to_a[0].post }
         it { should == post_text }
       end
 
+      context "bury_time" do
+        subject { Post.where.to_a[0].bury_time }
+        it { should == Time.new(Time.now.year, Time.now.month, Time.now.day) }
+      end
+
       let(:valid_post_time) { Time.new(Time.now.year, Time.now.month, Time.now.day) + post_time * day }
-      context do
+      context "post_time" do
         subject { Post.where.to_a[0].post_time }
         it { should == valid_post_time }
       end
