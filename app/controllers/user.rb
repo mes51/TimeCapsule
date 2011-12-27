@@ -3,7 +3,7 @@ TimeCapsule.controllers :user do
     content_type :json
     user_info = {}
 
-    user = env["rack.session"].to_hash[:user]
+    user = env["rack.session"].to_hash["user"]
     if user
       user_info[:user_id] = user.user_id
       user_info[:screen_name] = user.screen_name

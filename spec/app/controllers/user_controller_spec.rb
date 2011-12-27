@@ -21,7 +21,7 @@ describe "UserController" do
     context "logged in" do
 
       before do
-        get "/user/get_info", { }, "rack.session" => { :user => user }
+        get "/user/get_info", { }, "rack.session" => { "user" => user }
       end
 
       subject { parser.parse(last_response.body)[:logged_in] }
@@ -31,10 +31,10 @@ describe "UserController" do
 
   describe "logout" do
     before do
-      get "user/logout", { }, "rack.session" => { :user => user }
+      get "user/logout", { }, "rack.session" => { "user" => user }
     end
 
-    subject { last_request.env["rack.session"].to_hash[:user] }
+    subject { last_request.env["rack.session"].to_hash["user"] }
     it { should be_nil }
   end
 end

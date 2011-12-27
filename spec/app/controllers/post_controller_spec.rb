@@ -24,7 +24,7 @@ describe "PostController" do
         post TimeCapsuleEnv[:url] + "post",
              { :post => post_text,
                :post_time => post_time },
-             "rack.session" => { :user => user }
+             "rack.session" => { "user" => user }
       end
 
       context "status" do
@@ -69,7 +69,7 @@ describe "PostController" do
       before do
         post TimeCapsuleEnv[:url] + "post",
              { :post_time => post_time },
-             "rack.session" => { :user => user }
+             "rack.session" => { "user" => user }
       end
 
       subject { last_response.status }
@@ -80,7 +80,7 @@ describe "PostController" do
       before do
         post TimeCapsuleEnv[:url] + "post",
              { :post => post_text },
-             "rack.session" => { :user => user }
+             "rack.session" => { "user" => user }
       end
 
       subject { last_response.status }
@@ -92,7 +92,7 @@ describe "PostController" do
         post TimeCapsuleEnv[:url] + "post",
              { :post => post_text,
                :post_time => post_time },
-             "rack.session" => { :user => user }
+             "rack.session" => { "user" => user }
       end
 
       subject { last_response.status }
