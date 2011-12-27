@@ -1,5 +1,17 @@
----
-auth:
-  key: ""
-  secret: ""
-url: ""
+defaults: &defaults
+  auth:
+    key: ""
+    secret: ""
+  url: ""
+
+local:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults

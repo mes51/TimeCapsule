@@ -21,7 +21,7 @@ describe "PostController" do
   describe "post" do
     context "valid parms given" do
       before do
-        post TimeCapsuleEnv["url"] + "post",
+        post TimeCapsuleEnv[:url] + "post",
              { :post => post_text,
                :post_time => post_time },
              "rack.session" => { :user => user }
@@ -56,7 +56,7 @@ describe "PostController" do
 
     context "no logged in" do
       before do
-        post TimeCapsuleEnv["url"] + "post",
+        post TimeCapsuleEnv[:url] + "post",
              { :post => post_text,
                :post_time => post_time }
       end
@@ -67,7 +67,7 @@ describe "PostController" do
 
     context "not give post text" do
       before do
-        post TimeCapsuleEnv["url"] + "post",
+        post TimeCapsuleEnv[:url] + "post",
              { :post_time => post_time },
              "rack.session" => { :user => user }
       end
@@ -78,7 +78,7 @@ describe "PostController" do
 
     context "not give post time" do
       before do
-        post TimeCapsuleEnv["url"] + "post",
+        post TimeCapsuleEnv[:url] + "post",
              { :post => post_text },
              "rack.session" => { :user => user }
       end
@@ -89,7 +89,7 @@ describe "PostController" do
 
     context "invalid post time given" do
       before do
-        post TimeCapsuleEnv["url"] + "post",
+        post TimeCapsuleEnv[:url] + "post",
              { :post => post_text,
                :post_time => post_time },
              "rack.session" => { :user => user }

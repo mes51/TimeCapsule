@@ -18,7 +18,7 @@ Padrino::Logger::Config[:local] = { :log_level => :devel, :stream => :stdout }
 # Add your before load hooks here
 #
 Padrino.before_load do
-  TimeCapsuleEnv = YAML.load(File.open("config/config.yml"))
+  TimeCapsuleEnv = YAML.load(File.open("config/config.yml"))[PADRINO_ENV].symbolize_keys
   Padrino.require_dependencies(Padrino.root + "/task/**/*.rb")
 end
 

@@ -5,6 +5,7 @@ port = Mongo::Connection::DEFAULT_PORT
 
 database_name = case Padrino.env
   when :local       then 'time_capsule_local'
+  when :development then 'time_capsule_development'
   when :production  then 'time_capsule_production'
   when :test        then 'time_capsule_test'
 end

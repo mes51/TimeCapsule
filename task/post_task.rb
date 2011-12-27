@@ -7,8 +7,8 @@ module PostTask
     posts.each do |p|
       u = user[p.user_id]
       Twitter.configure do |conf|
-        conf.consumer_key = TimeCapsuleEnv["auth"]["key"]
-        conf.consumer_secret = TimeCapsuleEnv["auth"]["secret"]
+        conf.consumer_key = TimeCapsuleEnv[:auth]["key"]
+        conf.consumer_secret = TimeCapsuleEnv[:auth]["secret"]
         conf.oauth_token = u.access_key
         conf.oauth_token_secret = u.access_key_secret
       end
