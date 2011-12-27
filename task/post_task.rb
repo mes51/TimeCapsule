@@ -12,7 +12,7 @@ module PostTask
         conf.oauth_token = u.access_key
         conf.oauth_token_secret = u.access_key_secret
       end
-      Twitter.update(p.post)
+      Twitter.update("タイムカプセルを開封しました! " + p.post)
       p.remove
     end
   end
