@@ -8,6 +8,7 @@ TimeCapsule.controllers :user do
       user_info[:user_id] = user.user_id
       user_info[:screen_name] = user.screen_name
     end
+    user_info[:logged_in] = user != nil
 
     Yajl::Encoder.encode user_info
   end

@@ -14,8 +14,8 @@ describe "UserController" do
         get "/user/get_info"
       end
 
-      subject { parser.parse(last_response.body).length }
-      it { should == 0 }
+      subject { parser.parse(last_response.body)[:logged_in] }
+      it { should be_false }
     end
 
     context "logged in" do
@@ -24,8 +24,8 @@ describe "UserController" do
         get "/user/get_info", { }, "rack.session" => { :user => user }
       end
 
-      subject { parser.parse(last_response.body).length }
-      it { should == 2 }
+      subject { parser.parse(last_response.body)[:logged_in] }
+      it { should be_true }
     end
   end
 

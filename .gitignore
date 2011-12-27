@@ -9,3 +9,4 @@ vendor/gems/*
 config/config.yml
 logs/*
 tmp/*
+*.swp
