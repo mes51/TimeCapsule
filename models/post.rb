@@ -4,5 +4,6 @@ class Post
 
   field :user_id, :type => Integer
   field :post, :type => String
-  field :post_time, :time => Time
+  field :bury_time, :type => Time
+  field :post_time, :type => Time
 end
